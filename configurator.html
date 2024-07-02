@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TurboRent - wypożyczalnia samochodów sportowyc</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/lightbox.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+    <script src="js/lightbox.js"></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <nav><!--Górny pasek: Logo i menu-->
+        <a href="index.html"><div id="logo"></div></a>
+        <div id="menu">
+            <ul>
+                <li><a href="#" onClick="menu(1)">Home</a></li>
+                <li><a href="#" onClick="menu(2)">Oferta</a></li>
+                <li><a href="configurator.html">Zamów samochód</a></li>
+                <li><a href="#" onClick="menu(3)">Galeria</a></li>
+                <li><a href="#" onClick="menu(4)">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main><!--Głowna część strony-->
+        <section class="config"><!--Treść nad formularzem-->
+            <h1>Konfigurator wypożyczenia</h1>
+                <h3>Stawka za wypożyczenie to 200zł za jeden dzień*.</h3><br>
+                <p>*Za każdą rozpoczętą dobę.</p><br>
+            <div class="configurator">
+                
+                <form onSubmit="wykonaj()"><!--Formularz-->
+                    <ul>
+                        <li><label for="fullname">Imię i nazwisko:</label><br>
+                        <input type="text" name="fullname" id="fullname" placeholder="Twoje imię i nazwisko" 
+                        pattern="[A-Za-z\s]{2,100}" required></li>
+                        <li><label for="age">Wiek:</label><br>
+                        <input type="number" name="age" id="age" min="18" placeholder="Twój wiek" required></li>
+                        <li><label for="phone">Numer telefonu:</label><br>
+                        <input type="tel" name="phone" id="phone" placeholder="700700700" pattern="[0-9]{9}" required></li>
+                        <li>Samochód:<br>
+                            <select id="carsList">
+                                <option value="Brabus Porshe 911">Brabus 900 Rocket R (PORSCHE 911 TURBO S)</option>
+                                <option value="Brabus AMG GT-63">Brabus 1000(MERCEDES-AMG GT 63 S E PERFORMANCE)</option>
+                                <option value="BMW M3">BMW M3 CS</option>
+                            </select>
+                        </li>
+                        <li>Dostępna lokalizacja:<br>
+                            <select id="localization">
+                                <option value="Lublin">Lublin</option>
+                                <option value="Warszawa">Warszawa</option>
+                                <option value="Kraków">Kraków</option>
+                            </select>
+                        </li>
+                        <li><label for="date-start">Dzień rozpoczęcia: </label><input type="date" id="date-start" required></li>
+                        <li><label for="date-end">Dzień zakończenia: </label><input type="date" id="date-end" required></li>
+                        <li><label for="car-license-1">Skan prawa jazdy: </label><input type="file" id="car-license-1" accept="image/*"></li>
+                        <li><br>Sposób zapłaty:
+                            <input type="radio" name="platnosc" id="gotowka" value="Gotówka" required checked> <label for="gotowka" class="gotowka">Gotówka</label>
+                            <input type="radio" name="platnosc" id="karta" value="Karta" required> <label for="karta" class="karta">Karta</label>
+                        </li>
+                        <li><br><input type="checkbox" id="license-check" required> <label for="license-check">Potwierdzam, że moje dane są prawdziwe.</label></li>
+                        <li>
+                            <button class="btn-normal" type="submit">Wyślij</button> 
+                            <input type="reset" value="Wyczyść" class="btn-normal">
+                        </li>
+                    </ul>
+                </form>
+            </div>
+            <div id="box"><!--Tu będą wyświetlane aktualne wypożyczenia z localStorage-->
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>
